@@ -3,6 +3,21 @@ import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
 import Nav from '../components/Nav';
 
+/*
+fill basic data
+summary
+selling points??
+services
+testimonials
+about
+contact
+footer
+menu colour hovers
+extended services menu hover with summary
+
+*/
+
+
 const Header = styled(({className})=>{
 	return (
 		<div className={className}>
@@ -41,7 +56,7 @@ const Header = styled(({className})=>{
 	}
 
 	h1 {
-		font-family:'Roboto',sans-serif;
+		font-family:'Futura',sans-serif;
 		font-size:3.4rem;
 		position:relative;
 		z-index:1;
@@ -99,13 +114,50 @@ const Header = styled(({className})=>{
 	}
 `
 
+const List = styled(({className})=>(
+	<div className={className}>
+		<h2>Services we offer</h2>
+	</div>
+))`
+	h2 {
+		width:100%;
+		font-size:4rem;
+		line-height:1.5;
+		padding-top:1rem;
+		text-align:center;
+		font-family:'Futura',sans-serif;
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+	}	
+`
+
 const Main = styled(({className}) => {
 	return (
 		<ParallaxProvider>
-		<Nav/>
-		<Header/>
-		<div className={className}>
-		<div className="second">
+			<Nav/>
+			<Header/>
+			<div className={className}>
+				<div className="summary">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+				<div className="selling-points">
+					<div>
+						<h3>Point 1</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>	
+					<div>
+						<h3>Point 2</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>	
+					<div>
+						<h3>Point 3</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>	
+				</div>
+				<div className="services">
+					<List/>
+				</div>
+				<div className="second">
 			<h1>Section 1</h1>
 			<p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -121,7 +173,32 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 		</ParallaxProvider>
 		)
 })`
-	.header {
+	.summary {
+		font-family:'Roboto',sans-serif;
+		font-size:2rem;
+		line-height:1.5;
+		text-align:center;
+		background-color:#eee;
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+		padding:10%;
+		padding-right:max(10rem,10%);
+		width:100%;
+		box-sizing:border-box;
+	}
+
+	.services {
+		clear:both;
+	}
+	.selling-points {
+		width:100%;
+	}
+		
+	.selling-points > div {
+		float:left;
+		width:33%;
+		box-sizing:border-box;
+		padding:5%;
 	}
 
 	.left {
