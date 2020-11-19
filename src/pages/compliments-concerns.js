@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
-const About = styled(({className}) => (
+const Page = styled(({className}) => (
 	<div className={className}>
 	</div>	
 ))`
 
 `
+
+export default Page;

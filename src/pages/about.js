@@ -6,3 +6,5 @@ const About = styled(({className}) => (
 ))`
 
 `
+
+export default About;
