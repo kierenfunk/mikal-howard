@@ -87,13 +87,13 @@ collections:
   - name: "services"
     label: "Services"
     folder: "src/markdown/services"
-    create: false
-    delete: false
-    editor:
-      preview: true
+    create: true
     fields:
+      - label: "Slug"
+        name: "slug"
+        widget: string
       - label: "Service Name"
-        name: "name"
+        name: "title"
         widget: string
       - label: "Logo"
         name: "logo"

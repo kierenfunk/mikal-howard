@@ -9,12 +9,12 @@ export default function Index({data,tours}) {
 }
 
 export async function getStaticProps(context) {
-  const postsDirectory = path.join(process.cwd(), 'src/markdown/tours');
+  const postsDirectory = path.join(process.cwd(), 'src/markdown/services');
   const filenames = fs.readdirSync(postsDirectory);
 
 	const tours = []
 	await filenames.map(async (file) =>{
-		const content = await import(`../markdown/tours/${file}`);
+		const content = await import(`../markdown/services/${file}`);
 		const data = matter(content.default);
 		data.data.slug = file.slice(0,file.length-3);
 		tours.push(data.data)
