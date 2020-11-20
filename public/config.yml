@@ -50,18 +50,22 @@ collections:
         file: "src/markdown/about.md"
         fields:
           - label: "Header"
-            name: "header"
+            name: "title"
             widget: string
-          - label : "Paragraphs"
-            name: "paragraphs"
+          - label: "Our Mission"
+            name: "mission"
+            widget: markdown
+          - label : "About Mikal"
+            name: "about_mikal"
             widget: list
             collapse: true
             fields:
-              - label: "Body"
-                name: "body"
+              - label: "Paragraph"
+                name: "paragraph"
                 widget: markdown
               - label: "Image"
                 name: "image"
+                required: false
                 allow_multiple: false
                 widget: image
       - label: "Privacy Policy"
@@ -69,7 +73,7 @@ collections:
         file: "src/markdown/privacy-policy.md"
         fields:
           - label: "Header"
-            name: "header"
+            name: "title"
             widget: string
           - label: "Body"
             name: "body"
@@ -79,7 +83,7 @@ collections:
         file: "src/markdown/compliments-concerns.md"
         fields:
           - label: "Header"
-            name: "header"
+            name: "title"
             widget: string
           - label: "Body"
             name: "body"
@@ -99,8 +103,25 @@ collections:
         name: "logo"
         allow_multiple: false
         widget: image
-
-# summary paragraphs
-# step by step process
-# something convincing
-
+      - name: "menu_summary"
+        label: "Summary for the menu"
+        widget: markdown
+      - name: "home_summary"
+        label: "Summary for the home page"
+        widget: markdown
+      - name: "body"
+        label: "dunno what the layout is atm, but this is the main body"
+        widget: markdown
+      - name: "process"
+        label: "Step by step process"
+        widget: list
+        fields:
+          - label: "Body"
+            name: "step_body"
+            widget: markdown
+          - label: "Header"
+            name: "step_header"
+            widget: string
+      - name: "cta"
+        label: "Something convincing"
+        widget: markdown
