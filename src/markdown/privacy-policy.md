@@ -1,5 +1,5 @@
 ---
-header: Privacy Policy
+title: Privacy Policy
 ---
 At Mikal Howard Finance, we are committed to protecting your privacy in accordance with the Privacy Act 1988 (Cth). This Privacy Policy describes our current policies and practices in relation to the handling and use of personal information.
 

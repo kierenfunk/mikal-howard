@@ -1,5 +1,5 @@
 ---
-header: Compliments and Concerns
+title: Compliments and Concerns
 ---
 We always work hard to build strong and lasting relationships with our valued customers. By listening to your feedback, not only can we address any immediate concerns you may have we will also continually improve our products and services.
 

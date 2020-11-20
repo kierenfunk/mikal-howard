@@ -131,7 +131,7 @@ const MenuIcon = styled(({className,open}) => {
 	}
 `
 
-const Nav = styled(({className}) => {
+const Nav = styled(({className,home}) => {
 	const [openServices, setOpenServices] = useState(false);
 	const [openResponsive, setOpenResponsive] = useState(false);
 	const [width,setWidth] = useState(0);
@@ -175,7 +175,8 @@ const Nav = styled(({className}) => {
 							</div>
 						</div>
 						<div className="column-1">
-							<div className="cell"><a href="/">About</a><div className="cell-icon"></div></div>
+							{home? null : <div className="cell"><a href="/">Home</a><div className="cell-icon"></div></div>}
+							<div className="cell"><a href="/about">About</a><div className="cell-icon"></div></div>
 							<div className="cell">
 								<div className={`services-link-wrapper ${openServices? 'open-services' : ''}`}>
 									<div className={`services-link`} onClick={()=>{setOpenServices(true)}}>

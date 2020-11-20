@@ -91,7 +91,7 @@ collections:
   - name: "services"
     label: "Services"
     folder: "src/markdown/services"
-    create: true
+    create: false
     fields:
       - label: "Slug"
         name: "slug"

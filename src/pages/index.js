@@ -1,29 +1,15 @@
 import Main from '../layouts/Main';
-import matter from 'gray-matter';
-import ReactMarkdown from 'react-markdown';
-import fs from 'fs';
-import path from 'path';
+import propRetrieval from '../utils/propRetrieval.js';
 
-export default function Index({data,tours}) {
-	return <Main data={data,tours}/>
-}
+const Index = ({data,content,services}) => (
+	<Main data={data} content={content} services={services}/>
+)
 
 export async function getStaticProps(context) {
-  const postsDirectory = path.join(process.cwd(), 'src/markdown/services');
-  const filenames = fs.readdirSync(postsDirectory);
-
-	const tours = []
-	await filenames.map(async (file) =>{
-		const content = await import(`../markdown/services/${file}`);
-		const data = matter(content.default);
-		data.data.slug = file.slice(0,file.length-3);
-		tours.push(data.data)
-	})
-	
-	const content = await import('../markdown/home.md');
-	const {data} = matter(content.default);
+	const data = await propRetrieval('home.md');
 	return {
-		props:{data,tours}
+		props:{...data}
 	}
 }
 
+export default Index;

@@ -1,10 +1,15 @@
-import styled from 'styled-components';
+import InfoPage from '../layouts/InfoPage.js';
+import propRetrieval from '../utils/propRetrieval.js';
 
-const Page = styled(({className}) => (
-	<div className={className}>
-	</div>	
-))`
+const ComplimentsConcerns = ({data,content,services}) => (
+	<InfoPage data={data} content={content} services={services}/>
+)
 
-`
+export async function getStaticProps(context) {
+	const data = await propRetrieval('compliments-concerns.md');
+	return {
+		props:{...data}
+	}
+}
 
-export default Page;
+export default ComplimentsConcerns;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { StyleSheetManager } from 'styled-components';
 import Main from '../layouts/Main';
+import InfoPage from '../layouts/InfoPage';
 
 const StyleInjection = ({children}) => {
 	const [frame,setFrame] = useState('');
@@ -18,6 +19,7 @@ const StyleInjection = ({children}) => {
 }
 
 export default function Admin() {
+	const [loaded,setLoaded] = useState(false);
 	useEffect(()=>{
 		(async () => {
 			const CMS = (await import('netlify-cms-app')).default;
@@ -28,10 +30,19 @@ export default function Admin() {
 				</StyleInjection>
 			))
 			CMS.registerPreviewStyle("normalize.css");
+			CMS.registerPreviewStyle("global.css");
 			CMS.registerPreviewStyle("fonts/Futura-Book.css");
+			setLoaded(true);
 		})();
 	},[])
 
-	return (<Head><script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script></Head>)
+	return (
+		<div>
+			<Head>
+				<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+			</Head>
+		{loaded? null : <div>loading.....</div>}
+		</div>
+	)
 }
 
