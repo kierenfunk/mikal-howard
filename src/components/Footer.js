@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import {Link as SmoothLink} from 'react-scroll';
+import Section from './Section'
 
 const Footer = styled(({className})=>{
 	return(
 		<footer className={className}>
+			<Section>
 			<SmoothLink className="scroll" smooth={true} to="top">Back to Top</SmoothLink>
 			<ul>
 				<li><a href="/privacy-policy">Privacy Policy</a></li>
@@ -16,12 +18,11 @@ const Footer = styled(({className})=>{
 				© Mikal Howard Finance 2020. All Rights Reserved.
 			</small>
 			<p>Website by <a href="https://www.kierenfunk.com">Kieren Funk</a></p>
+			</Section>
 		</footer>
 	)
 })`
-	padding:10%;
 	background-color:#ddd;
-	box-sizing:border-box;
 	.scroll {
 		cursor:pointer;
 	}

@@ -4,114 +4,158 @@ import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/PageWrapper';
 import Accordion from '../components/Accordion';
 import Section from '../components/Section';
+import Arrow from '../icons/Arrow';
+import {Link as SmoothLink} from 'react-scroll';
 
 /*
 fill basic data
-summary
-selling points??
-services
 testimonials
 about
 contact
-footer
 menu colour hovers
 extended services menu hover with summary
 sitemap generator
 */
 
-const Header = styled(({className})=>{
-	return (
-		<div className={className}>
-			<div className="content">
-				<div className="logo">
-					<img src={require("../../public/images/logo.png?resize&size=300")}/>
-				</div>
-				<h1>Your Loan,<br/> Your Way</h1>
-				<p>Finance from a local broker you can trust</p>
+
+const BgCoverImage = styled(({className,children,image})=>(
+	<div className={className}>
+		<SmoothLink className="scroll arrow-wrapper" smooth={true} to="summary">
+			<p>scroll</p>
+			<div>
+				<Arrow/>
 			</div>
-			<div className="image">
-				<Parallax y={[10, -20]}>
-					<img 
-						src={require("../../public/images/mikal.jpg?resize&size=1024")}
-					/>
-				</Parallax>
-			</div>
-		</div>
-	)
-})`
-	min-height:100vh;
-	text-align:center;
-	padding:2%;
-	box-sizing:border-box;
-	display:flex;
-	flex-wrap:wrap;
-	flex-direction:row-reverse;
-	
-	img {
-		visibility: visible;
-		padding: 0px;
-		border: medium none;
-		margin: auto;
-		max-width: 100%;
-		max-height: 100%;
+		</SmoothLink>
+	</div>
+))`
+	flex:100%;
+	background-image: url(${props=>props.image});
+	background-position:center;
+	background-size:cover;
+	background-repeat: no-repeat;
+	min-height:110vw;
+	width:85vw;
+	margin:auto;
+	position:relative;
+
+	.arrow-wrapper {
+		display:none;
 	}
 
-	h1 {
-		font-family:'Futura',sans-serif;
-		font-size:3.4rem;
-		position:relative;
-		z-index:1;
+	@keyframes mymove {
+		from {bottom: 2.5px;}
+		25% {bottom:5px;}
+		75% {bottom:0px;}
+		to {bottom:2.5px;}
 	}
-	p {
-		font-family:'Roboto',sans-serif;
-		font-size:1.2rem;
+
+	@media (min-width:568px) {
+		min-height:624px;
+		width:482.8px;
 	}
-	.logo {
-		padding-top:1rem;
-		width:50%;
-		margin:auto;
+	@media (min-width:1024px) {
+		flex:38.8%;
+		min-height:auto;
+		width:auto;
+		margin:0;
+
+		.arrow-wrapper {
+			position:absolute;
+			bottom:0;
+			right:2rem;
+			margin:1.6rem;
+			display:block;
+			cursor:pointer;
+			display:flex;
+		}
+	
+		.arrow-wrapper > p {
+			margin:0;
+			padding:0 0.3rem 0 0;
+			text-transform:uppercase;
+			font-weight:bold;
+			color:white;
+		}
+		svg {
+			position:absolute;
+			bottom:2.5px;
+			animation: mymove 1.5s infinite linear;
+		}
+		.arrow-wrapper:hover svg {
+			bottom:2.5px;
+			animation: none;
+		}
 	}
-	.content {
-		flex:100%;
+`
+
+const HeaderContent = styled(({className})=>(
+	<div className={className}>
+		<div>
+			<img src={require("../../public/images/logo.png?resize&size=300")}/>
+		</div>
+		<div className={"text"}>
+			<h1>Your Loan,<br></br>Your Way</h1>
+			<p>Finance from a local broker you can trust</p>
+		</div>
+	</div>	
+))`
+	box-sizing:border-box;
+	flex:100%;
+	text-align:center;
+	padding:3%;
+	display:flex;
+	flex-direction:column;
+	img {
+		max-width:70%;	
+		padding:5%;
 		box-sizing:border-box;
 	}
-	.image {
-		flex:100%;
-		width:70%;
-		max-width:440px;
-		margin:auto;	
+	p {
+		font-size:1.4rem;
 	}
-
+	h1 {
+		margin:1rem 0rem;
+		line-height:1.1;
+	}
+	.text {
+		flex-grow:1;
+		display:flex;
+		justify-content:center;
+		flex-direction:column;
+	}
 	@media (min-width:568px) {
 		h1 {
 			font-size:5rem;
 		}
 	}
 	@media (min-width:1024px) {
-		padding:0;
+		flex:61.2%;	
 		text-align:left;
-		.logo {
-			width:50%;
-			margin:0;
+		img {
+			padding:0;
 		}
-		.content{
-			flex:61.2%;	
-			padding:3%;
-		}
-		.image {
-			width:100%;
-			max-width:100%;
-			flex:38.8%;
-		}	
 		h1 {
 			font-size:6rem;
-			margin:4rem 0 2rem 0;
 		}
 	}
 	@media (min-width:1280px) {
 		h1 {
 			font-size:8rem;
 		}
+	}
+`
+
+const Header = styled(({className})=>(
+	<div className={className}>
+		<HeaderContent/>
+		<BgCoverImage image={require("../../public/images/mikal.jpg?resize&size=600")}/>
+	</div>
+))`
+	min-height:100vh;
+	display:flex;
+	flex-direction:column;
+	@media (min-width:1024px) {
+		flex-direction:row-reverse;
 	}
 `
 
@@ -156,32 +200,36 @@ const Services = styled(({className,services})=>(
 		</Section>
 	</div>
 ))`
-	clear:both;
+	h2 {
+		text-align:center;
+	}
 `
 
-const Main = styled(({className,data,content,services}) => {
-	return (
-		<ParallaxProvider>
-			<PageWrapper home={true}>
+const Main = styled(({className,data,content,services}) => (
+	<ParallaxProvider>
+		<PageWrapper home={true}>
 			<Header/>
 			<div className={className}>
-				<Section>
+				<Section id="summary">
 					<div className="summary">
 						<ReactMarkdown source={data.summary}/>
 					</div>
 				</Section>
-				<SellingPoints points={data.selling_points}/>
-				<Services services={services}/>
 			</div>
-			</PageWrapper>
-		</ParallaxProvider>
-		)
-})`
+			<SellingPoints points={data.selling_points}/>
+			<Services services={services}/>
+			{/* change theme here */}
+			<Parallax y={[-20,20]} styleOuter={{textAlign:'center',width:"100%"}}>
+				<img style={{maxWidth:"100%"}} src={require("../../public/images/mikal2.jpg?resize&size=1000")}/>
+			</Parallax>
+			{/*testimonials */}
+			{/*about */}
+			{/*contact */}
+		</PageWrapper>
+	</ParallaxProvider>
+))`
 	.summary {
 		font-size:1.4rem;
-		text-align:center;
-	}
-	h2 {
 		text-align:center;
 	}
 	@media (min-width:568px) {

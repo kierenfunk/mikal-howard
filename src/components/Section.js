@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const Section = styled(({className,children})=>(
-	<div className={className}>
+const Section = styled(({className,children,...props})=>(
+	<div className={className} {...props}>
 		{children}
 	</div>	
 ))`
-	padding:5%;
+	padding:5% 2%;
 	width:100%;
 	box-sizing:border-box;
 
@@ -13,7 +13,7 @@ const Section = styled(({className,children})=>(
 		padding-right:12rem;
 	}
 	@media (min-width:1024px) {
-		padding:10%;
+		padding:7% 10%;
 		padding-right:max(12rem,10%);
 	}
 `

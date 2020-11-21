@@ -41,7 +41,7 @@ a:hover {
 
 small, .text_small {font-size: 0.75rem;}
 
-img {
+.img {
 		visibility: visible;
 		padding: 0px;
 		border: medium none;
