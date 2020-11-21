@@ -241,7 +241,6 @@ const Nav = styled(({className,home}) => {
 	}
 	
 	.cell a, .services-cell a{
-		color:black;
 		text-decoration:none;
 	}
 	.cell {

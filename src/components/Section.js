@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const Section = styled(({className,children,...props})=>(
-	<div className={className} {...props}>
+	<div className={`${className} section`} {...props}>
 		{children}
 	</div>	
 ))`
 	padding:5% 2%;
 	width:100%;
 	box-sizing:border-box;
-
+	
 	@media (min-width:768px) {
 		padding-right:12rem;
 	}

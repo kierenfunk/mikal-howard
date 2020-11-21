@@ -1,3 +1,4 @@
+import {useRef,useEffect,useState,useCallback} from 'react';
 import {ParallaxProvider, Parallax} from 'react-scroll-parallax';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
@@ -205,9 +206,39 @@ const Services = styled(({className,services})=>(
 	}
 `
 
-const Main = styled(({className,data,content,services}) => (
+const Theme = styled.div`
+	h1,h2,h3,h4,h5,h6,p,small,a{
+		color:${props=>props.dark?'white':'black'};
+		transition: color 0.6s ease-in-out;
+	}
+	.section,body {
+		transition: background-color 0.6s ease-in-out;
+		background-color:${props=>props.dark?'#222':'white'};
+	}
+`
+
+const Main = styled(({className,data,content,services}) => {
+	const ref = useRef(null);
+	const [darkTheme,setTheme] = useState(false);
+
+  const handleScroll = useCallback(event => {
+		const bounding = ref.current.getBoundingClientRect();
+		if(	bounding.top < (window.innerHeight/4 || document.documentElement.clientHeight/4)){
+			if(!darkTheme){setTheme(true)}
+		}
+		else if(darkTheme){setTheme(false)}
+  }, [ref,darkTheme]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
+	return (
 	<ParallaxProvider>
-		<PageWrapper home={true}>
+		<Theme dark={darkTheme}>
+			<PageWrapper home={true}>
 			<Header/>
 			<div className={className}>
 				<Section id="summary">
@@ -217,17 +248,25 @@ const Main = styled(({className,data,content,services}) => (
 				</Section>
 			</div>
 			<SellingPoints points={data.selling_points}/>
+
 			<Services services={services}/>
 			{/* change theme here */}
-			<Parallax y={[-20,20]} styleOuter={{textAlign:'center',width:"100%"}}>
-				<img style={{maxWidth:"100%"}} src={require("../../public/images/mikal2.jpg?resize&size=1000")}/>
-			</Parallax>
+			<div ref={ref}>
+				<Parallax y={[-10,10]} styleOuter={{textAlign:'center',width:"100%"}}>
+					<img style={{maxWidth:"100%"}} src={require("../../public/images/mikal2.jpg?resize&size=1000")}/>
+				</Parallax>
+			</div>
 			{/*testimonials */}
+			<Section>
+				<h2>About Us</h2>
+				<ReactMarkdown source={data.home_about}/>
+			</Section>
 			{/*about */}
 			{/*contact */}
-		</PageWrapper>
+			</PageWrapper>
+		</Theme>
 	</ParallaxProvider>
-))`
+)})`
 	.summary {
 		font-size:1.4rem;
 		text-align:center;
