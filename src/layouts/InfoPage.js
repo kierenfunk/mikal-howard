@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import Nav from '../components/Nav.js';
-import Footer from '../components/Footer.js';
 import ReactMarkdown from 'react-markdown';
+import PageWrapper from '../components/PageWrapper';
 
 const Page = styled(({className,data,content,services})=>{
 	return(	
-		<div>
-			<Nav home={false}/>
-			<div id="top"></div>
+		<PageWrapper home={false}>
 			<div className={className}>
 				<div className="logo">
 					<a href="/"><img src={require("../../public/images/logo.png?resize&size=300")}/></a>
@@ -15,8 +12,7 @@ const Page = styled(({className,data,content,services})=>{
 				<h1>{data.title}</h1>
 				<ReactMarkdown source={content}/>
 			</div>
-			<Footer/>
-		</div>
+		</PageWrapper>
 )})`
 	text-align:center;
 	width:100%;
