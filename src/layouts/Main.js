@@ -115,6 +115,50 @@ const Header = styled(({className})=>{
 	}
 `
 
+const SellingPoints = styled(({className,points})=>(
+		<Section>
+			<div className={className}>
+				{points.map((item,i)=>(
+						<div className={"item"} key={i}>
+							<h3>{item.header}</h3>
+							<ReactMarkdown>
+								{item.body}
+							</ReactMarkdown>
+						</div>
+					))}
+			</div>
+		</Section>
+))`
+	display:flex;
+	flex-direction:column;
+	box-sizing:border-box;
+	.item {
+		background-color:#eee;
+		flex: 100%;
+		box-sizing:border-box;
+		margin:1%;
+		padding:0 2%;
+	}
+
+	@media (min-width:1280px) {
+		flex-direction:row;
+		.item {
+			flex: 33%;
+		}
+	}
+`
+
+const Services = styled(({className,services})=>(
+	<div className={className}>
+		<Section>
+			<h2>Our Services</h2>
+			<Accordion items={services}/>
+		</Section>
+	</div>
+))`
+	clear:both;
+`
+
 const Main = styled(({className,data,content,services}) => {
 	return (
 		<ParallaxProvider>
@@ -126,52 +170,29 @@ const Main = styled(({className,data,content,services}) => {
 						<ReactMarkdown source={data.summary}/>
 					</div>
 				</Section>
-				<div className="selling-points">
-					<div>
-						<h3>Point 1</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					</div>	
-					<div>
-						<h3>Point 2</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					</div>	
-					<div>
-						<h3>Point 3</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					</div>	
-				</div>
-
-				<div className="services">
-					<Section>
-						<h2>Our Services</h2>
-						<Accordion items={services}/>
-					</Section>
-				</div>
+				<SellingPoints points={data.selling_points}/>
+				<Services services={services}/>
 			</div>
 			</PageWrapper>
 		</ParallaxProvider>
 		)
 })`
 	.summary {
-		font-size:2rem;
+		font-size:1.4rem;
 		text-align:center;
-		background-color:#eee;
-	}
-	.services {
-		clear:both;
 	}
 	h2 {
 		text-align:center;
 	}
-	.selling-points {
-		width:100%;
+	@media (min-width:568px) {
+		.summary {
+			font-size:1.7rem;
+		}
 	}
-		
-	.selling-points > div {
-		float:left;
-		width:33%;
-		box-sizing:border-box;
-		padding:5%;
+	@media (min-width:768px) {
+		.summary {
+			font-size:2rem;
+		}
 	}
 `
 
