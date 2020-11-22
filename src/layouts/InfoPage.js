@@ -4,7 +4,7 @@ import PageWrapper from '../components/PageWrapper';
 
 const Page = styled(({className,data,content,services})=>{
 	return(	
-		<PageWrapper home={false}>
+		<PageWrapper home={false} dark={false} services={services}>
 			<div className={className}>
 				<div className="logo">
 					<a href="/"><img src={require("../../public/images/logo.png?resize&size=300")}/></a>
