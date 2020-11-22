@@ -22,7 +22,8 @@ const Footer = styled(({className})=>{
 		</footer>
 	)
 })`
-	background-color:#ddd;
+	padding:3%;
+	box-sizing:border-box;
 	.scroll {
 		cursor:pointer;
 	}

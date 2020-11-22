@@ -1,20 +1,14 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-const Close = styled(({className}) => {
-	return (
-		<div className={className}>
-			<img src="/images/close.svg"/>
-		</div>
-)
-})`
-	height:100%;
-	width:100%;
-	text-align:right;
-	img {
-		height:50%;
-	}
-`
+import LinkedIn from '../icons/LinkedIn';
+import Twitter from '../icons/Twitter';
+import Youtube from '../icons/Youtube';
+import Close from '../icons/Close';
+import Facebook from '../icons/Facebook';
+import Phone from '../icons/Phone';
+import DropLeft from '../icons/DropLeft';
+import DropRight from '../icons/DropRight';
+import DropDown from '../icons/DropDown';
 
 const Arrow = styled(({className,size,left}) => {
 	return (
@@ -33,46 +27,9 @@ const Arrow = styled(({className,size,left}) => {
 	}
 `
 
-const Social = styled(({className,src,href}) => {
+const MenuIcon = styled(({className,open,onClick}) => {
 	return (
-		<div className={className}>
-			<a href={href}><img src={src}/></a>
-		</div>
-)
-})`
-	height:100%;
-	display:inline;
-	padding-left:1.6rem;
-	img {
-		color:red;
-		height:50%;
-	}
-	@media (min-width:568px){
-		padding-left:2rem;
-		img {
-			height:60%;
-		}
-	}
-`
-const Phone = styled(({className}) => {
-	return (
-		<div className={className}>
-			<img src="/images/phone.svg"/>
-		</div>
-)
-})`
-	height:100%;
-	width:100%;
-	text-align:right;
-	img {
-		height:50%;
-		transform:rotate(270deg);
-	}
-`
-
-const MenuIcon = styled(({className,open}) => {
-	return (
-		<div className={`${className}`}>
+		<div className={`${className}`} {...{onClick}}>
 			<div className={`wrapper ${open? ' open':''}`}>
 				<span></span>
 				<span></span>
@@ -86,7 +43,7 @@ const MenuIcon = styled(({className,open}) => {
 
 })`
 	position:fixed;
-	z-index:3;
+	z-index:103;
 	top:0;
 	right:0;
 	padding:1rem;
@@ -102,16 +59,19 @@ const MenuIcon = styled(({className,open}) => {
 		height:20px;
 		line-height:20px;
 		overflow:hidden;
+		color:${props=>props.dark? 'white':'black'};
+		transition:color 0.6s ease-in-out;
+		margin-top:0.5rem;
 	}
 
 	span {
 		position:relative;
 		display:block;
 		height:0.2rem;
-		background-color:black;
 		margin-bottom:0.4rem;
 		width:100%;
-		transition:transform 0.3s ease-in-out;
+		background-color:${props=>props.dark? 'white':'black'};
+		transition:transform 0.3s ease-in-out,background-color 0.6s ease-in-out;
 	}
 	
 	.open span:first-child {
@@ -129,9 +89,215 @@ const MenuIcon = styled(({className,open}) => {
 	.open .label > div {
 		transform:translateY(-100%);
 	}
+	@media (min-width: 768px) {
+		display:none;
+	}
 `
 
-const Nav = styled(({className,home}) => {
+const ServicesMenu = styled(({className,dark,open,onClick,services})=>{
+	return (
+	<div className={className}>
+		<div className="services-column">
+			<div className="services-cell hide-md" onClick={onClick}><Arrow left={true}/></div>
+			{
+				services.map((service,i)=>(
+					<div key={i} className="services-cell">
+						<a href={`/${service.slug}`}>
+							{service.title}
+						</a>
+					</div>
+				))	
+			}
+		</div>
+	</div>
+)})`
+	background-color:white;
+	position:fixed;
+	box-sizing:border-box;
+	z-index:102;
+	height:100%;
+	width:100%;
+	top:0;
+	left:100%;
+	display:flex;
+	align-items:center;
+	justify-content:flex-end;
+	padding-right:10%;
+	transition:transform 0.3s ease-in-out;
+	transform:${props=>props.open? 'translateX(-100%)':'translateX(0%)'};
+	color:black;
+
+	.services-column {
+		text-align:right;
+	}
+
+	.services-cell {
+		font-size:2rem;
+		line-height:3rem;
+		height:3rem;
+		overflow:hidden;
+	}
+	.services-cell a{
+		text-decoration:none;
+		font-family:'Futura',sans-serif;
+		transition: color 0.6s ease-in-out;
+	}
+	.services-cell a:hover{
+		color:var(--red);
+		transition:none;
+	}
+	
+	.services-cell > a {
+		color:black;	
+	}
+	@media (min-width: 568px) {
+		.services-cell {
+			font-size:2.4rem;
+			line-height:3.4rem;
+			height:3.4rem;
+		}
+	}
+	
+	@media (min-width: 768px) {
+		.hide-md {
+			display:none;
+		}
+		justify-content:flex-start;
+		padding:10%;
+		min-width:768px;
+		max-width:61.8%;
+		.services-column {
+			text-align:left;
+		}
+	}
+`
+
+const Social = styled(({className,dark,children,...props})=>(
+	<div className={className} {...props}>
+		{children}
+	</div>
+))`
+	margin-right:2.5rem;
+	font-size:inherit;
+	fill:${props=>props.dark? 'white':'black'};
+	svg {
+		margin-left:0.8rem;
+		transition:fill 0.6s ease-in-out;
+	}
+	svg:hover {
+		fill:var(--red);
+		transition:none;
+	}
+	@media (min-width: 768px) {
+		margin-right:0;
+		font-size:2rem;
+		position:fixed;
+		bottom:2rem;
+		right:2rem;
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+	}
+`
+
+const Icon = styled(({className,children,...props}) => (
+	<div className={className} {...props}>
+		{children}
+	</div>
+))`
+	width:2.5rem;
+	display:flex;
+	align-items:center;
+	justify-content:flex-end;
+	font-size:inherit;
+	@media (min-width: 768px) {
+		width:1.4rem;
+	}
+`
+const MainMenu = styled(({className,openServices,width,dark,services,setOpen,home})=>(
+	<div className={className}>
+		<ul style={{right:""}}>
+			<li><a href="/about">About<Icon/></a></li>
+			<li onClick={()=>setOpen(!openServices)}>
+				<div className={`${openServices? 'move-up':''}`}>Services<Icon><DropRight/></Icon></div>
+				<div className={`${openServices? 'move-up':''}`}>Close<Icon><Close/></Icon></div>
+			</li>
+			<li><a href="#contact">Contact<Icon/></a></li>
+			<li><a href="tel:+61419820366">0419 820 366<Icon><Phone/></Icon></a></li>
+			<Social dark={dark} style={{right:`${16+width}px`}}>
+				<a href="/"><Facebook/></a>
+				<a href="/"><Youtube/></a>
+				<a href="/"><Twitter/></a>
+				<a href="/"><LinkedIn/></a>
+				<Icon/>
+			</Social>
+		</ul>
+	</div>
+
+))`
+	text-align:right;
+	position:relative;
+	ul {
+		position:relative;
+		font-size:min(2rem,9vw);
+	}
+	li>div {
+		position:relative;
+		transform:translateY(0%);
+	}
+	li>div,li>a {
+		display:flex;
+		justify-content:flex-end;
+		height:3rem;
+		color:${props=>props.dark? 'white':'black'};
+		fill:${props=>props.dark? 'white':'black'};
+		cursor:pointer;
+		align-items:center;
+		transition:transform 0.3s ease-in-out, color 0.6s ease-in-out, fill 0.6s ease-in-out;
+		text-decoration:none;
+		font-family:'Futura',sans-serif;
+	}
+	li>div:hover,li>a:hover {
+		color:var(--red);
+		fill:var(--red);
+		transition:none;
+	}
+	li {
+		overflow:hidden;
+		height:3rem;
+	}
+	@media (min-width: 568px) {
+		ul{
+			min-width:auto;
+			font-size:2.4rem;
+		}
+		li,li>div,li>a{
+			height:3.4rem;
+		}
+	}
+
+	@media (min-width: 768px) {
+		li>div,li>a {
+			text-transform:uppercase;
+			font-family:'Roboto',sans-serif;
+		}
+		ul{
+			font-size:1rem;
+			font-weight:bold;
+		}
+		li,li>div,li>a{
+			height:1.5rem;
+		}
+		li>div{
+			z-index:105;
+		}
+		.move-up{
+			transform:translateY(-100%);
+		}
+	}
+`
+
+const Nav = styled(({className,home,dark,services}) => {
 	const [openServices, setOpenServices] = useState(false);
 	const [openResponsive, setOpenResponsive] = useState(false);
 	const [width,setWidth] = useState(0);
@@ -151,65 +317,27 @@ const Nav = styled(({className,home}) => {
 		}
 
 	},[width,openResponsive,openServices])
+
 	return (
 			<div className={className}>
-				<div className={"menu-icon hide-md"} onClick={()=>{
+				<MenuIcon open={openResponsive} onClick={()=>{
 						setOpenResponsive(!openResponsive);
 						setOpenServices(false);	
-					}}>
-					<MenuIcon open={openResponsive}/>	
-				</div>
+				}} dark={dark&&!openResponsive}/>	
 				<div className={`overlay${openServices? ' fade-in' : ' fade-out'}`}></div>
 				<div className={`main-navigation${openResponsive? ' open-resp' : ''}`} style={{right:`${width}px`}}>
-						<div className={`services-menu${openServices? ' open' : ''}`}>
-							<div className="services-column">
-								<div className="services-cell hide-md" onClick={()=>{setOpenServices(false)}}><Arrow left={true}/></div>
-								<div className="services-cell">
-									<a href="/">Home Loans</a>
-									<p>test</p>
-								</div>
-								<div className="services-cell"><a href="/">Small Business</a></div>
-								<div className="services-cell"><a href="/">Insurance</a></div>
-								<div className="services-cell"><a href="/">Car and Asset</a></div>
-								<div className="services-cell"><a href="/">Utilities</a></div>
-							</div>
-						</div>
-						<div className="column-1">
-							{home? null : <div className="cell"><a href="/">Home</a><div className="cell-icon"></div></div>}
-							<div className="cell"><a href="/about">About</a><div className="cell-icon"></div></div>
-							<div className="cell">
-								<div className={`services-link-wrapper ${openServices? 'open-services' : ''}`}>
-									<div className={`services-link`} onClick={()=>{setOpenServices(true)}}>
-										Services
-										<div className="cell-icon"><Arrow right={true}/></div>
-									</div>
-									<div className="services-link" onClick={()=>{setOpenServices(false)}}>
-										Close
-										<div className="cell-icon"><Close/></div>
-									</div>
-								</div>
-							</div>
-							<div className="cell"><a href="/">Contact</a><div className="cell-icon"></div></div>
-							<div className="cell services-link"><a href="tel:+61419820366">0419 820 366</a><div className="cell-icon"><Phone/></div></div>
-							<div className={"cell social"} style={{right:`${16+width}px`}}>
-								<Social href="/" src="/images/twitter.svg"/>
-								<Social href="/" src="/images/facebook.svg"/>
-								<Social href="/" src="/images/youtube.svg"/>
-								<Social href="/" src="/images/linkedin.svg"/>
-								<div className="cell-icon"></div>
-							</div>
-						</div>
-					</div>
+					<ServicesMenu {...{open:openServices,dark,services}} onClick={()=>{setOpenServices(false)}}/>
+					<MainMenu {...{openServices,width,dark:dark&&(!openServices&&!openResponsive),services,setOpen:setOpenServices,home}}/>
+				</div>
 			</div>)	
 
 })`
-	font-family: 'Roboto', sans-serif;
 
-	.main-navigation, .services-menu {
+	.main-navigation {
 		background-color:white;
 		position:fixed;
 		box-sizing:border-box;
-		z-index:2;
+		z-index:102;
 		height:100%;
 		width:100%;
 		top:0;
@@ -221,65 +349,20 @@ const Nav = styled(({className,home}) => {
 		transition:transform 0.3s ease-in-out;
 	}
 
-	.main-navigation.open-resp, .services-menu.open{
+	.main-navigation.open-resp{
 		transform:translateX(-100%);
 	}
-
-	.services-menu {
-		z-index:3;
-	}
-
-	.column-1, .services-column {
-		text-align:right;
-	}
-
-	.cell, .services-cell {
-		font-size:2rem;
-		line-height:3rem;
-		height:3rem;
-		overflow:hidden;
-	}
-	
-	.cell a, .services-cell a{
-		text-decoration:none;
-	}
-	.cell {
-		display:flex;
-		justify-content:flex-end;
-	}
-	.services-link {
-		height:100%;
-		display:flex;
-		justify-content:flex-end;
-		cursor:pointer;
-	}
-	.cell-icon {
-		width:2.5rem;
-		height:100%;
-	}
-		
 	.overlay {
 		width:100%;
 		height:100%;
 		position:fixed;
 		left:0;
 		top:0;
-		z-index:1;
+		z-index:101;
 		background-color:black;
 		display:none;
 	}
-	@media (min-width: 568px) {
-		.cell, .services-cell {
-			font-size:2.4rem;
-			line-height:3.4rem;
-			height:3.4rem;
-		}
-	}
-	
 	@media (min-width: 768px) {
-		.menu-icon, .hide-md {
-			display:none;
-		}
 		.main-navigation {
 			background-color:transparent;
 			position:fixed;
@@ -294,31 +377,6 @@ const Nav = styled(({className,home}) => {
 		.main-navigation.open-resp {
 			transform: translateX(0);	
 		}
-		.cell {
-			font-size:1rem;
-			font-weight:bold;
-			text-transform:uppercase;
-			line-height:24px;
-			height:24px;
-		}
-		.cell-icon {
-			width:1.2rem;
-		}
-		.services-link-wrapper {
-			transition: transform 0.3s ease-in-out;
-			position:relative;
-			z-index:3;
-		}
-		.open-services {
-			transform:translateY(-100%);
-		}
-		.social {
-			position:fixed;
-			bottom:2rem;
-			height:auto;
-			flex-direction:column;
-			align-items:center;
-		}
 		.overlay {
 			display:block;
 		}
@@ -332,17 +390,6 @@ const Nav = styled(({className,home}) => {
 			visibility:hidden;
 			transition:visibility 0s ease-in-out 300ms,opacity 0.3s ease-in-out;
 		}
-
-		.services-menu {
-			justify-content:flex-start;
-			padding:10%;
-			min-width:768px;
-			max-width:61.8%;
-		}
-		.services-column {
-			text-align:left;
-		}
-
 	}
 `
 

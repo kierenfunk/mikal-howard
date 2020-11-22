@@ -5,15 +5,15 @@ import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/PageWrapper';
 import Accordion from '../components/Accordion';
 import Section from '../components/Section';
+import Testimonials from '../components/Testimonials';
 import Arrow from '../icons/Arrow';
+import Swirl from '../icons/Swirl';
 import {Link as SmoothLink} from 'react-scroll';
+
 
 /*
 fill basic data
-testimonials
-about
 contact
-menu colour hovers
 extended services menu hover with summary
 sitemap generator
 */
@@ -193,11 +193,11 @@ const SellingPoints = styled(({className,points})=>(
 	}
 `
 
-const Services = styled(({className,services})=>(
+const Services = styled(({className,services,dark})=>(
 	<div className={className}>
 		<Section>
 			<h2>Our Services</h2>
-			<Accordion items={services}/>
+			<Accordion items={services} dark={dark}/>
 		</Section>
 	</div>
 ))`
@@ -206,16 +206,79 @@ const Services = styled(({className,services})=>(
 	}
 `
 
+const About = styled(({className,data})=>(
+	<div className={className}>
+		<div className="image">
+			<img src={require("../../public/images/mikal3.jpg?resize&size=600")}/>
+		</div>
+		<div className="content">
+			<h2>Community focused</h2>
+			<ReactMarkdown source={data}/>
+		</div>
+	</div>	
+))`
+	display:flex;
+	flex-direction:column-reverse;
+	.image {
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		padding:3%;
+	}		
+	
+	.content {
+		padding:3%;
+		box-sizing:border-box;
+	}
+	.image img {
+		max-width:100%;
+		height:auto;
+	}
+
+	@media (min-width:1024px) {
+		flex-direction:row;
+		.image{
+			flex:40%;
+			padding:0;
+		}
+		.content{
+			flex:60%;
+		}
+	}
+`
+
 const Theme = styled.div`
 	h1,h2,h3,h4,h5,h6,p,small,a{
 		color:${props=>props.dark?'white':'black'};
+		border-color:${props=>props.dark?'white':'black'};
 		transition: color 0.6s ease-in-out;
 	}
-	.section,body {
-		transition: background-color 0.6s ease-in-out;
-		background-color:${props=>props.dark?'#222':'white'};
+	transition: background-color 0.6s ease-in-out;
+	background-color:${props=>props.dark?'#222':'#fff'};
+`
+const Line = styled(({className})=>(
+	<div className={className}>
+		<div/>
+	</div>
+))`
+	position:relative;
+	z-index:1;
+	div{
+		border-top:1px solid ${props=>props.dark? 'white':'black'};
+		transition: border-color 0.6s ease-in-out;
+	}
+	padding:0 5%;
+	width:100%;
+	box-sizing:border-box;
+	@media (min-width:768px) {
+		padding-right:12rem;
+	}
+	@media (min-width:1024px) {
+		padding:0 10%;
+		padding-right:max(12rem,10%);
 	}
 `
+
 
 const Main = styled(({className,data,content,services}) => {
 	const ref = useRef(null);
@@ -226,7 +289,9 @@ const Main = styled(({className,data,content,services}) => {
 		if(	bounding.top < (window.innerHeight/4 || document.documentElement.clientHeight/4)){
 			if(!darkTheme){setTheme(true)}
 		}
-		else if(darkTheme){setTheme(false)}
+		else if(darkTheme){
+			setTheme(false)
+		}
   }, [ref,darkTheme]);
 
   useEffect(() => {
@@ -238,7 +303,7 @@ const Main = styled(({className,data,content,services}) => {
 	return (
 	<ParallaxProvider>
 		<Theme dark={darkTheme}>
-			<PageWrapper home={true}>
+			<PageWrapper home={true} dark={darkTheme} services={services}>
 			<Header/>
 			<div className={className}>
 				<Section id="summary">
@@ -249,20 +314,30 @@ const Main = styled(({className,data,content,services}) => {
 			</div>
 			<SellingPoints points={data.selling_points}/>
 
-			<Services services={services}/>
+			<Services services={services} dark={darkTheme}/>
 			{/* change theme here */}
-			<div ref={ref}>
-				<Parallax y={[-10,10]} styleOuter={{textAlign:'center',width:"100%"}}>
-					<img style={{maxWidth:"100%"}} src={require("../../public/images/mikal2.jpg?resize&size=1000")}/>
+
+			<div ref={ref}></div>
+			<div style={{position:"relative"}}>
+				<Parallax y={[-15,15]} styleOuter={{position:"relative",zIndex:1,textAlign:'center',width:"100%"}}>
+					<div style={{overflowX:"hidden",display:"flex",justifyContent:"center"}}>
+						<img style={{minWidth:"1000px"}} src={require("../../public/images/mikal2.jpg?resize&size=1000")}/>
+					</div>
+				</Parallax>
+				<Parallax y={[20,-20]} styleOuter={{position:"absolute",top:"50px",padding:"2%",zIndex:0,display:"flex",justifyContent:"flex-end"}} styleInner={{width:"35%"}}>
+						<Swirl dark={darkTheme}/>
 				</Parallax>
 			</div>
-			{/*testimonials */}
-			<Section>
-				<h2>About Us</h2>
-				<ReactMarkdown source={data.home_about}/>
+			<Section style={{position:"relative",zIndex:1}}>
+				<Testimonials dark={darkTheme} testimonials={data.testimonials}/>
+			</Section>
+			<Line dark={darkTheme}/>
+			<Section style={{position:"relative",zIndex:1}}>
+				<About data={data.home_about}/>
 			</Section>
 			{/*about */}
 			{/*contact */}
+
 			</PageWrapper>
 		</Theme>
 	</ParallaxProvider>
@@ -270,6 +345,9 @@ const Main = styled(({className,data,content,services}) => {
 	.summary {
 		font-size:1.4rem;
 		text-align:center;
+	}
+	.line {
+		border:1px solid white;
 	}
 	@media (min-width:568px) {
 		.summary {

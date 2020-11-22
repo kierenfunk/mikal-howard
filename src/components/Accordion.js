@@ -24,7 +24,7 @@ const Toggle = styled(({className,open,onClick}) => (
 		display:block;
 		height:0.2rem;
 		width:100%;
-		background-color:black;
+		background-color:${props=>props.dark? 'white' : 'black'};
 	}
 	
 	> span:first-child {
@@ -45,10 +45,10 @@ const AccordionContent = styled(({className,open,children})=>{
 	opacity:${props=>props.open? 1 : 0};
 `
 
-const AccordionHeader = styled(({className,item,open,onClick})=>(
+const AccordionHeader = styled(({className,item,open,onClick,dark})=>(
 	<div className={className}>
 		<h3><a href={`/${item.slug}`}>{item.title}</a></h3>
-		<Toggle open={open} onClick={onClick}/>
+		<Toggle open={open} onClick={onClick} dark={dark}/>
 	</div>
 ))`
 	display:flex;	
@@ -60,8 +60,8 @@ const AccordionHeader = styled(({className,item,open,onClick})=>(
 
 	h3 > a {
 		font-family:'Futura',sans-serif;
-		color:black;
 		text-decoration:none;
+		transition: none;
 	}
 
 	h3 > a:hover {
@@ -69,13 +69,14 @@ const AccordionHeader = styled(({className,item,open,onClick})=>(
 	}
 `
 
-const AccordionItem = styled(({className,item})=>{
+const AccordionItem = styled(({className,item,dark})=>{
 	const [open,setOpen] = useState(false);
 	return (
 		<div className={className}>
 			<AccordionHeader
 				item={item}
 				open={open}
+				dark={dark}
 				onClick={()=>setOpen(!open)}
 			/>
 			<AccordionContent open={open}>
@@ -84,7 +85,7 @@ const AccordionItem = styled(({className,item})=>{
 		</div>
 	)
 })`
-	border-top:1px solid black;
+	border-top:1px solid ${props=>props.dark? 'white' : 'black'};
 	width:100%;
 	margin:auto;
 	transition:0.4s;
@@ -92,9 +93,9 @@ const AccordionItem = styled(({className,item})=>{
 	box-sizing:border-box;
 `
 
-const Accordion = styled(({className,items})=>(
+const Accordion = styled(({className,items,dark})=>(
 	<div className={className}>
-		{items.map((item,i)=><AccordionItem item={item} key={i}/>)}
+		{items.map((item,i)=><AccordionItem item={item} key={i} dark={dark}/>)}
 	</div>
 ))``
 
