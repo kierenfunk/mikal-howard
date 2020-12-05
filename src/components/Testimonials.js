@@ -27,7 +27,7 @@ const Testimonials = styled(({className,dark,testimonials}) => {
 			<ForwardArrow onClick={()=>setSlide((slide+1)%testimonials.length)} style={{cursor:"pointer"}}/>
 		</div>
 		<Carousel
-			dynamicHeight={true}
+			dynamicHeight={false}
 			infiniteLoop={true}
 			showStatus={false}
 			showThumbs={false}

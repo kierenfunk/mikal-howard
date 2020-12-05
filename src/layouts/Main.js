@@ -281,6 +281,7 @@ const Line = styled(({className})=>(
 
 
 const Main = styled(({className,data,content,services}) => {
+	console.log(data)
 	const ref = useRef(null);
 	const [darkTheme,setTheme] = useState(false);
 
@@ -300,6 +301,7 @@ const Main = styled(({className,data,content,services}) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
+	console.log(data)
 	return (
 	<ParallaxProvider>
 		<Theme dark={darkTheme}>

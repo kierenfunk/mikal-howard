@@ -16,7 +16,7 @@ const Swirl = styled(({className,dark})=>(
 	}
 	path {
 		transition: fill .6s ease-in-out;
-		fill:#eee;
+		fill:inherit;
 	}
 	.dark path {
 		fill:#111;

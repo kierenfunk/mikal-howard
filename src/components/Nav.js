@@ -217,7 +217,7 @@ const Icon = styled(({className,children,...props}) => (
 const MainMenu = styled(({className,openServices,width,dark,services,setOpen,home})=>(
 	<div className={className}>
 		<ul style={{right:""}}>
-			{!home?<li><a href="/about">Home<Icon/></a></li>: null}
+			{!home?<li><a href="/">Home<Icon/></a></li>: null}
 			<li><a href="/about">About<Icon/></a></li>
 			<li onClick={()=>setOpen(!openServices)}>
 				<div className={`${openServices? 'move-up':''}`}>Services<Icon><DropRight/></Icon></div>
