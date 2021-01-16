@@ -10,11 +10,11 @@ home_summary: "Going through the process of securing a home loan can be
   financial situation. \r\n"
 body_text: >-
   Financing the budget you need to buy a home or secure a loan involves a lot of
-  deciscion making and paperwork. The first step is to find a bank to finance
-  the loan that is right for you. At Mikal Howard Finance, we know what the
-  options are, and will help you choose what is right for you. We offer  a
-  comprehensive financing service to help you realise the full potential of your
-  ventures. 
+  decision making and paperwork. The first step is to find a bank to finance the
+  loan that is right for you. At Mikal Howard Finance, we know what the options
+  are, and will help you choose what is right for you. We offer  a comprehensive
+  financing service to help you realise the full potential of your home
+  ownership. 
 
 
   We also take you through the next steps which will involve getting together the official documents and contracts to finance your loan. After we finance your loan together, we like to keep in touch and inform you of any changes to continue to make sure you receive the sharpest rates. 
