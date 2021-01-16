@@ -41,6 +41,7 @@ testimonials:
       any happier with how quickly we found our home, secured the loan and moved
       into the new house.
 home_about: "We like to help everyone in our community on the road to financial
-  comfort. That is why we have a special mobile service, we will come to you if
-  you can't come to us. Get in touch with us to find out how we can help.  "
+  comfort. That is why we have a special mobile service: we will come to you if
+  you can't come to us. Get in touch with us today to find out how we can
+  help.  "
 ---
