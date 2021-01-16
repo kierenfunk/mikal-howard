@@ -1,15 +1,15 @@
 ---
 title: We provide knowledgeable and up-to-date services.
-mission: "At Mikal Howard Finance, we value providing excellent and
-  knowledgeable financial services tailored to your specific financial needs.
-  Our experience in securing anything from home loans to car insurance will
-  guarantee you the best possible rates at the time of application and we make
-  sure to keep you up to date with the best rates thereafter so that you never
-  pay more than you have to. This is because we find it important to take a
-  personal approach with each of our clients so we can take you through the
-  financial side of your business, securing your assets or loan step by step.
-  All so you can take the headache out of your finances and feel comfortable
-  starting on your journey towards financial freedom with a passive income. "
+mission: >-
+  At Mikal Howard Finance, we value providing excellent and knowledgeable
+  financial services tailored to your specific financial needs. Our experience
+  in securing anything from home loans to car insurance will guarantee you the
+  best possible rates when applying. We will also make sure to keep you up to
+  date with the best rates afterwards so that you never pay more than you have
+  to. 
+
+
+  This is because we find it important to take a personal approach with each of our clients so we can take you through the financial side of your business, or securing your assets or loan without the stress. We like to take the headache out of your finances and make you feel comfortable starting your journey towards financial freedom with a passive income. 
 background: "I started out as a toolmaker and machinist for Holden and because
   of this, I now have 14 years of experience in the manufacturing industry
   managing large teams where I acquired the interpersonal skill set that allows
@@ -18,7 +18,7 @@ background: "I started out as a toolmaker and machinist for Holden and because
 
 
   *'Mikal is one of the warmest and friendliest people I have come across in
-  my career as a Conveyancer. He is extremely passionate about providing the
+  my career as a conveyancer. He is extremely passionate about providing the
   best possible service to his clients and ensuring a positive outcome. You
   cannot help but smile in Mikal's presence. I cannot recommend him highly
   enough for your finance needs.'* \r
