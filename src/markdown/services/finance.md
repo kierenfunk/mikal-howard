@@ -3,7 +3,7 @@ slug: finance
 title: Finance
 order: 1
 logo: images/logo.png
-header_title: "Saving you the headache of financing your projects. "
+header_title: Saving you the headache of financing your home.
 home_summary: "Going through the process of securing a home loan can be
   daunting, let us make it easy for you. Whether it's your first home or a big
   move, our personalised approach will ensure you receive the best rate for your
