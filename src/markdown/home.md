@@ -1,8 +1,13 @@
 ---
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat.
+summary: >-
+  With years of experience in finance, Mikal Howard Finance can confidently
+  guide you through the process of securing your loan or insurance.
+
+
+  We offer you an efficient and reliable service tailored to your specific finance needs without any hidden consultation fees. Even after we secure your loan or insurance, we will keep you up to date with the latest financial developments to ensure you continue to receive the best possible rates. 
+
+
+  Find out what we can do for you today by booking you free, no strings attached consultation.
 selling_points:
   - header: Point 1
     body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
