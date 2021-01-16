@@ -43,5 +43,9 @@ testimonials:
       acts very quickly to secure the best home loan deal possible. Couldn't be
       any happier with how quickly we found our home, secured the loan and moved
       into the new house.
-home_about: n.hhgoy
+home_about: "We value our community and like to see everyone on the road to
+  financial health. With our experience in finance, insurance and
+  small-business, you can trust us to help you achieve financial freedom. We
+  understand the finance needs of our community and will be able to help you
+  with your personal financing necessities. "
 ---
