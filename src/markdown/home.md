@@ -1,29 +1,23 @@
 ---
-summary: >-
-  With years of experience in finance, Mikal Howard Finance can confidently
-  guide you through the process of securing your loan or insurance.
+summary: >+
+  With years of experience in finance, we will help you through the process of
+  securing your loan or insurance at the sharpest rates. 
 
 
-  We offer you an efficient and reliable service tailored to your specific finance needs without any hidden consultation fees. Even after we secure your loan or insurance, we will keep you up to date with the latest financial developments to ensure you continue to receive the best possible rates. 
 
 
-  Find out what we can do for you today by booking you free, no strings attached consultation.
 selling_points:
-  - header: Point 1
-    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-  - header: Point 2
-    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-  - header: Point 3
-    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
+  - header: No extra costs
+    body: "We offer you an efficient and reliable service tailored to your specific
+      finance needs without any hidden consultation fees: our services are free
+      of charge and stay free of charge. "
+  - header: "Keeping you up to date "
+    body: "Even after we secure your loan or insurance, we will keep you up to date
+      with the latest financial developments to ensure you continue to receive
+      the best possible rates. "
+  - header: Quick and easy
+    body: "Get in touch with us today and we will give you our expert answers to
+      your finance questions. "
 testimonials:
   - name: Tammy E.
     body: I have worked with Mikal for several years. He is professional and
@@ -46,8 +40,7 @@ testimonials:
       acts very quickly to secure the best home loan deal possible. Couldn't be
       any happier with how quickly we found our home, secured the loan and moved
       into the new house.
-home_about: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat.
+home_about: "We like to help everyone in our community on the road to financial
+  comfort. That is why we have a special mobile service, we will come to you if
+  you can't come to us. Get in touch with us to find out how we can help.  "
 ---
