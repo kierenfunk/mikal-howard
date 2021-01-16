@@ -16,7 +16,22 @@ const Body = styled(({className,content})=>(
 	text-align:left;
 `
 
-const Page = styled(({className,data,content,services})=>{
+const Page = styled(({className,content,services})=>{
+	const data = {
+	slug:"",
+	title:"",
+	logo:"images/logo.png",
+	header:"",
+	home_summary:"",
+	body_text:"",
+	process:[
+		{step_body:"",step_header:""},
+		{step_body:"",step_header:""},
+		{step_body:"",step_header:""},
+	],
+	picture:"",
+	cta:""
+}
 	return(	
 		<PageWrapper home={false} dark={false} services={services}>
 			<div className={className}>
