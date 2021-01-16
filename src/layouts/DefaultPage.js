@@ -7,11 +7,9 @@ import Swirl from '../icons/Swirl';
 import DropDown from '../icons/DropDown';
 
 const Body = styled(({className,content})=>(
-	<Section>
-		<div className={className}>
-			<ReactMarkdown source={content}/>
-		</div>
-	</Section>
+	<div className={className}>
+		<ReactMarkdown source={content}/>
+	</div>
 ))`
 	text-align:left;
 `
@@ -39,10 +37,11 @@ const Page = styled(({className,data,content,services})=>{
 				</Section>
 				<Section>
 					<Expand items={data.process} dark={false}/>
+					<img className="page-img" src={require(`../../public/${data.picture}?resize&size=800`)}/>
 				</Section>
-				{/* picture */}
 				<Section>
 					<Body content={data.cta}/>
+				{/* picture */}
 				</Section>
 			</div>
 		</PageWrapper>
@@ -51,6 +50,10 @@ const Page = styled(({className,data,content,services})=>{
 	width:100%;
 	margin:auto;
 	box-sizing:border-box;
+
+	.page-img {
+		margin-top:3%;
+	}
 
 	.logo {
 		padding-top:3rem;
