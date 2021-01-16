@@ -132,6 +132,7 @@ collections:
       - name: "picture"
         label: "Picture"
         widget: image
+        required: false
         allow_multiple: false
       - name: "cta"
         label: "Call to Action"

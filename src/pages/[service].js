@@ -6,7 +6,7 @@ const Service = ({data,content,services}) => (
 )
 
 export async function getStaticProps(context) {
-	const data = await propRetrieval('about.md');
+	const data = await propRetrieval(`services/${context.params.service}.md`);
 	return {
 		props:{...data}
 	}
