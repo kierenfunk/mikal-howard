@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { StyleSheetManager } from 'styled-components';
 import Main from '../layouts/Main';
 import InfoPage from '../layouts/InfoPage';
+import DefaultPage from '../layouts/DefaultPage';
+import AboutPage from '../layouts/AboutPage';
 
 const StyleInjection = ({children}) => {
 	const [frame,setFrame] = useState('');
@@ -45,6 +47,31 @@ const defaultServices = [
     "logo": "images/logo.png"
   }
 ]
+
+const defaultAbout = {
+	"title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"mission": "",
+	"picture" : "",
+	"background": "",
+	"quote": "",
+	"cta" : "",
+}
+
+const defaultServicesTemplate = {
+	slug:"",
+	title:"",
+	logo:"images/logo.png",
+	header:"",
+	home_summary:"",
+	body_text:"",
+	process:[
+		{step_body:"",step_header:""},
+		{step_body:"",step_header:""},
+		{step_body:"",step_header:""},
+	],
+	picture:"",
+	cta:""
+}
 
 const defaultMain = {
   "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -94,6 +121,16 @@ export default function Admin() {
 					<Main data={{...defaultMain,...entry.toJS().data}} content={''} services={defaultServices}/>
 				</StyleInjection>
 			))
+			CMS.registerPreviewTemplate('about', ({ entry }) => (
+				<StyleInjection>
+					<AboutPage data={{...defaultAbout,...entry.toJS().data}} content={''} services={defaultServices}/>
+				</StyleInjection>
+			))
+			CMS.registerPreviewTemplate('services', ({ entry }) => (
+				<StyleInjection>
+					<DefaultPage data={{...defaultServicesTemplate,...entry.toJS().data}} content={''} services={defaultServices}/>
+				</StyleInjection>
+			))
 			CMS.registerPreviewTemplate('privacy_policy', ({ entry }) => (
 				<StyleInjection>
 					<InfoPage data={entry.toJS().data} content={entry.toJS().data.body} services={defaultServices}/>
@@ -107,6 +144,7 @@ export default function Admin() {
 			CMS.registerPreviewStyle("normalize.css");
 			CMS.registerPreviewStyle("global.css");
 			CMS.registerPreviewStyle("fonts/Futura-Book.css");
+			CMS.registerPreviewStyle("carousel.min.css");
 			setLoaded(true);
 		})();
 	},[])

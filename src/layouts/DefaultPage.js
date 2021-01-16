@@ -1,8 +1,20 @@
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/PageWrapper';
+import Section from '../components/Section';
+import Expand from '../components/Expand';
 import Swirl from '../icons/Swirl';
 import DropDown from '../icons/DropDown';
+
+const Body = styled(({className,content})=>(
+	<Section>
+		<div className={className}>
+			<ReactMarkdown source={content}/>
+		</div>
+	</Section>
+))`
+	text-align:left;
+`
 
 const Page = styled(({className,data,content,services})=>{
 	return(	
@@ -14,9 +26,7 @@ const Page = styled(({className,data,content,services})=>{
 					</div>
 					<div className="content-wrapper">
 						<div className="title">
-							<h2>{data.title}
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-							</h2>
+							<h2>{data.header_title}</h2>
 						</div>
 						<p>see more <DropDown/></p>
 					</div>
@@ -24,7 +34,16 @@ const Page = styled(({className,data,content,services})=>{
 						<Swirl dark={false}/>
 					</div>
 				</div>
-				{/*<ReactMarkdown source={content}/>*/}
+				<Section>
+					<Body content={data.body_text}/>
+				</Section>
+				<Section>
+					<Expand items={data.process} dark={false}/>
+				</Section>
+				{/* picture */}
+				<Section>
+					<Body content={data.cta}/>
+				</Section>
 			</div>
 		</PageWrapper>
 )})`

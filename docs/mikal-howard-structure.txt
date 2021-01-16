@@ -1,0 +1,44 @@
+Website Structure:
+/ (home)
+	- /about
+	- /finance (service)
+	- /small-business (service)
+	- /insurance (service)
+	- /car-and-asset (service)
+	- /connect (service)
+	- /privacy-policy
+	- /compliments-concerns
+
+Pages:
+/(home):
+	- Short description of what mikal howard finance does
+	- Services (short summary of each service with link out to each page)
+	- Include a home loan process?? (step 1,2,3,4... etc)
+ 	- Testimonials
+	- may include client success statistics? or home loan rates?
+	- finish with call to action (get in touch form) 
+
+/about:
+	- Our Mission
+	- About Mikal (Mikals story from holdens, property investory, mortgage broker) Sprinkle testimonial lines throughout
+	- Finish with how mikal likes to serve his clients.
+	- may include a lender carousel on this page?
+	- Call to action (get in touch form)
+
+Services pages (/finance, /small-business, /insurance, /car-and-asset, /connect)
+	- Short summary
+	- Further breakdowns (minor details about the service)
+	- Something to convince the reader
+	- call to action (get in touch form) - in the case of /connect the lead generation form
+
+Examples:
+https://www.altusfinancial.com.au
+https://ab.finance/
+https://www.cubehomeloans.com.au/
+https://yhlc.com.au/
+https://www.mortgagechoice.com.au/
+https://adelaidebroker.com.au/
+https://www.aussie.com.au/
+https://www.positivehomeloans.com.au/
+https://www.yourmortgage.com.au/
+

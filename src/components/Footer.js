@@ -3,6 +3,7 @@ import {Link as SmoothLink} from 'react-scroll';
 import Section from './Section'
 
 const Footer = styled(({className})=>{
+	const d = (new Date()).getFullYear()
 	return(
 		<footer className={className}>
 			<Section>
@@ -15,7 +16,7 @@ const Footer = styled(({className})=>{
 			<small>
 				Credit Representative 452798 is authorised under Australian Credit Licence 389328<br></br>
 				This page provides general information only and has been prepared without taking into account your objectives, financial situation or needs. We recommend that you consider whether it is appropriate for your circumstances and your full financial situation will need to be reviewed prior to acceptance of any offer or product. It does not constitute legal, tax or financial advice and you should always seek professional advice in relation to your individual circumstances. Subject to lenders terms and conditions, fees and charges and eligibility criteria apply.<br></br>
-				© Mikal Howard Finance 2020. All Rights Reserved.
+				© Mikal Howard Finance {d}. All Rights Reserved.
 			</small>
 			<p>Website by <a href="https://www.kierenfunk.com">Kieren Funk</a></p>
 			</Section>

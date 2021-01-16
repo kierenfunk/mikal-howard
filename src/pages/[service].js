@@ -1,3 +1,38 @@
+import DefaultPage from '../layouts/DefaultPage';
+import propRetrieval from '../utils/propRetrieval.js';
+
+const Service = ({data,content,services}) => (
+	<DefaultPage data={data} content={content} services={services}/>
+)
+
+export async function getStaticProps(context) {
+	const data = await propRetrieval('about.md');
+	return {
+		props:{...data}
+	}
+}
+
+export async function getStaticPaths() {
+  const blogSlugs = ((context) => {
+    const keys = context.keys()
+    const data = keys.map((key, index) => {
+      return key.replace(/^.*[\\\/]/, '').slice(0, -3)
+    })
+    return data
+  })(require.context('../markdown/services', true, /\.md$/))
+
+  const paths = blogSlugs.map((slug) => ({params:{service:`${slug}`}}))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export default Service;
+
+/*
+
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
@@ -49,4 +84,4 @@ export async function getStaticPaths() {
   }
 }
 
-export default About;
+export default About;*/

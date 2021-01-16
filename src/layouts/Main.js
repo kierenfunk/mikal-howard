@@ -7,24 +7,18 @@ import Accordion from '../components/Accordion';
 import Section from '../components/Section';
 import Testimonials from '../components/Testimonials';
 import Arrow from '../icons/Arrow';
+import DropDown from '../icons/DropDown';
 import Swirl from '../icons/Swirl';
 import {Link as SmoothLink} from 'react-scroll';
 
-
-/*
-fill basic data
-contact
-extended services menu hover with summary
-sitemap generator
-*/
 
 
 const BgCoverImage = styled(({className,children,image})=>(
 	<div className={className}>
 		<SmoothLink className="scroll arrow-wrapper" smooth={true} to="summary">
-			<p>scroll</p>
+			<p>see more</p>
 			<div>
-				<Arrow/>
+				<DropDown/>
 			</div>
 		</SmoothLink>
 	</div>
@@ -43,13 +37,6 @@ const BgCoverImage = styled(({className,children,image})=>(
 		display:none;
 	}
 
-	@keyframes mymove {
-		from {bottom: 2.5px;}
-		25% {bottom:5px;}
-		75% {bottom:0px;}
-		to {bottom:2.5px;}
-	}
-
 	@media (min-width:568px) {
 		min-height:624px;
 		width:482.8px;
@@ -63,7 +50,7 @@ const BgCoverImage = styled(({className,children,image})=>(
 		.arrow-wrapper {
 			position:absolute;
 			bottom:0;
-			right:2rem;
+			right:1rem;
 			margin:1.6rem;
 			display:block;
 			cursor:pointer;
@@ -80,11 +67,7 @@ const BgCoverImage = styled(({className,children,image})=>(
 		svg {
 			position:absolute;
 			bottom:2.5px;
-			animation: mymove 1.5s infinite linear;
-		}
-		.arrow-wrapper:hover svg {
-			bottom:2.5px;
-			animation: none;
+			fill:white;
 		}
 	}
 `
@@ -281,7 +264,6 @@ const Line = styled(({className})=>(
 
 
 const Main = styled(({className,data,content,services}) => {
-	console.log(data)
 	const ref = useRef(null);
 	const [darkTheme,setTheme] = useState(false);
 
@@ -301,7 +283,6 @@ const Main = styled(({className,data,content,services}) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
-	console.log(data)
 	return (
 	<ParallaxProvider>
 		<Theme dark={darkTheme}>
