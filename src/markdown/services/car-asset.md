@@ -11,12 +11,10 @@ home_summary: Financing your asset loans can be time consuming. Instead of
 body_text: >-
   We can help with financing the things you want: a new car, boat or caravan,
   and the things you need. We will take a look at your financial situation so
-  you can move forward to buying. Financing the ownership of new a car or any
-  other assets can be a huge help in making progress in your business and
-  personal life. 
+  you can move forward to buying. 
 
 
-  Whether it's a new car or equipment to make you business more efficient, the right loan will make ownership over your new asset a reality. When you book your free consultation, we will go over your asset loan options together to help you finance your assets and have them work to your financial benefit.
+  Financing the ownership of new a car or any other assets can be a huge help in making progress in your business and personal life. Whether it's a new car or equipment to make you business more efficient, the right loan will make ownership over your new asset a reality. When you book your free consultation, we will go over your asset loan options together to help you finance your assets and have them work to your financial benefit.
 process:
   - step_body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
