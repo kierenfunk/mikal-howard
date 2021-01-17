@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/PageWrapper';
 import Accordion from '../components/Accordion';
 import Section from '../components/Section';
+import ContactForm from '../components/ContactForm';
 import Testimonials from '../components/Testimonials';
 import Arrow from '../icons/Arrow';
 import DropDown from '../icons/DropDown';
@@ -318,9 +319,9 @@ const Main = styled(({className,data,content,services}) => {
 			<Section style={{position:"relative",zIndex:1}}>
 				<About data={data.home_about}/>
 			</Section>
-			{/*about */}
-			{/*contact */}
-
+			<Section style={{position:"relative",zIndex:1}}>
+				<ContactForm dark={darkTheme} title={"Get in touch with us today!"}/>
+			</Section>
 			</PageWrapper>
 		</Theme>
 	</ParallaxProvider>

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/PageWrapper';
 import Section from '../components/Section';
+import ContactForm from '../components/ContactForm';
 import Expand from '../components/Expand';
 import Swirl from '../icons/Swirl';
 import DropDown from '../icons/DropDown';
@@ -41,7 +42,9 @@ const Page = styled(({className,data,content,services})=>{
 				</Section>
 				<Section>
 					<Body content={data.cta}/>
-				{/* picture */}
+				</Section>
+				<Section>
+					<ContactForm dark={false} title={""}/>
 				</Section>
 			</div>
 		</PageWrapper>

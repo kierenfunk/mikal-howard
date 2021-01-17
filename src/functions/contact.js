@@ -35,7 +35,7 @@ const send = async (body) => {
 	const mailOptions = {
 		from: process.env.EMAIL_FROM,
 		to: process.env.EMAIL_TO,
-		subject: 'NEW MESSAGE from oz4wdadventures.com.au',
+		subject: 'NEW MESSAGE from mikalhowardfinance.com.au',
 		text: constructMessageBody(body)
 	};
 
@@ -49,7 +49,7 @@ const send = async (body) => {
 	else{
 		return {
 			statusCode:500,
-			body:JSON.stringify("Something went wrong and we couldn't process your request at this time. Please contact us by emailing oz4wdadventures@gmail.com or calling 0425 440 393")
+			body:JSON.stringify("Something went wrong and we couldn't process your request at this time.")
 		}
 	}
 }

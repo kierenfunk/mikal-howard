@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../components/PageWrapper';
+import ContactForm from '../components/ContactForm';
 import Section from '../components/Section';
 import Swirl from '../icons/Swirl';
 import DropDown from '../icons/DropDown';
@@ -50,6 +51,9 @@ const Page = styled(({className,data,content,services})=>{
 				<Body title="What is my background?" content={data.background}/>
 				<Quote content={data.quote}/>
 				<Body content={data.cta}/>
+				<Section>
+					<ContactForm dark={false} title={""}/>
+				</Section>
 			</div>
 		</PageWrapper>
 )})`
