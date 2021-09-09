@@ -7,7 +7,7 @@ import P from '../components/P';
 
 const ComplimentsConcerns = () => (
 	<div>
-		<Nav {...{email:'mikal@mikalhowardfinance.com.au',phone:'0419 820 366'}}/>
+		<Nav/>
 		<Section className="lg:w-10/12 m-auto">
 			<H1 id="compliments-and-concerns">Compliments and Concerns</H1>
 			<P className="my-8">We always work hard to build strong and lasting relationships with our valued customers. By listening to your feedback, not only can we address any immediate concerns you may have we will also continually improve our products and services.</P>

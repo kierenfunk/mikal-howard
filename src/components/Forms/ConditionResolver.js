@@ -5,6 +5,8 @@ const conditionResolver = (fields,values) => {
         let cond = fields.conditions[i]
         if(cond.action === 'equals' && values[cond.target] !== cond.value)
             return 'invisible'
+        else if(cond.action === 'notEmpty' && values[cond.target].length < 1)
+            return 'invisible'
     }
     return 'visible'
 }

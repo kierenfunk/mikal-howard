@@ -1,11 +1,6 @@
 import Phone from '../components/Icons/Phone';
 import Mail from '../components/Icons/Mail';
-
-const phoneToDialable = (number) => {
-	const n = number.split('').filter(c=> '0123456789'.includes(c))
-	n[0] = '+61'
-	return n.join("")
-}
+import phoneToDialable from '../utils/phoneToDialable';
 
 const TopBar = ({email, phone}) => (
 	<div className="text-right bg-gray-200 px-2 py-1 hidden md:block">

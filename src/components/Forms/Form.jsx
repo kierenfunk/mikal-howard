@@ -1,14 +1,16 @@
 import { Formik } from 'formik';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import isEmail from 'validator/lib/isEmail';
 
 import GenericStep from './GenericStep';
+import SubmissionStep from './SubmissionStep';
 import StepControl from './StepControl';
 import conditionResolver from './ConditionResolver';
 import Step from './Step';
 
-const Form = ({formFields, introduction}) => {
+const Form = ({formFields, Introduction}) => {
     const [step, setStep] = useState(0)
+    const [submissionError, setSubmissionError] = useState(false)
 
     const flatFields = formFields.reduce((obj,step)=>{
         if (step.fields)
@@ -18,14 +20,6 @@ const Form = ({formFields, introduction}) => {
                 return og
             },{})}
     },{})
-
-    useEffect(() => {
-        const onKeyDown = (e) => {
-            if (e.keyCode === 9)
-                e.preventDefault()
-        }
-        window.addEventListener('keydown', onKeyDown);
-    },[]);
 
     return (
         <Formik
@@ -47,6 +41,8 @@ const Form = ({formFields, introduction}) => {
                 },{})
             }}
             onSubmit={(values, { setSubmitting }) => {
+                setSubmitting(true);
+
                 let data = new FormData();
                 Object.keys(values).forEach(key=>{
                     console.log(key)
@@ -59,24 +55,25 @@ const Form = ({formFields, introduction}) => {
                 //    r=>r.json()
                 //).then(r=>console.log(r)).catch(e=>console.error)
                 //console.log(values)
-                //setTimeout(() => {
-                //alert(JSON.stringify(values, null, 2));
-                //setSubmitting(false);
-            //}, 400);
-        }}>
+                setTimeout(() => {
+                    setSubmitting(false);
+                }, 5000);
+            }
+        }>
             {props => (
                 <div className="h-full w-full flex flex-col justify-between items-center">
-                    <div>{step + 1} of {formFields.length}</div>
+                    <div><p className="mt-2 tracking-wide text-gray-900 uppercase font-bold">{step + 1} of {formFields.length}</p></div>
                     <div className="h-full relative w-full overflow-x-hidden">
                         <form onSubmit={props.handleSubmit}>
                             {formFields.map((fields,i)=>{
-                                if (introduction && i===0)
-                                    return <Step {...{index:i,key:i, step}}>{introduction}</Step>
-                                return <GenericStep {...{index:i,key:i,step,...fields,...props}}/>
+                                if (Introduction && i===0)
+                                    return <Step {...{index:i,key:i, step}}><Introduction currentStep={step===i}/></Step>
+                                return <GenericStep {...{index:i, key:i, step, ...fields, ...props}}/>
                             })}
                         </form>
                     </div>
                     <StepControl {...{step, setStep, formFields, ...props}}/>
+                    <SubmissionStep {...{submissionError, ...props}}/>
                 </div>
             )}
         </Formik>

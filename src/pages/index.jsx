@@ -9,7 +9,6 @@ import DollarSign from '../components/Icons/DollarSign';
 import House from '../components/Icons/House';
 import Link from 'next/link'
 
-
 const Hero = () => (
 	<div className="flex md:flex-row flex-col-reverse">
 		<div className="bg-gray-800 flex-1 flex items-center justify-center p-4 sm:p-8 text-white">
@@ -23,7 +22,7 @@ const Hero = () => (
 		</div>
 		<div className="flex-1 bg-gray-800">
 			<div className="">
-				<img className="object-contain h-full w-full" style={{maxHeight:'650px'}} src="images/Mikal17-optim.jpg" alt="picture of mikal standing proudly"></img>
+				<img className="object-contain h-full w-full" height="650" width="689" style={{maxHeight:'650px'}} src="images/Mikal17-optim.jpg" alt="picture of mikal standing proudly"></img>
 			</div>
 		</div>
 	</div>
@@ -58,7 +57,7 @@ const ContentSection = ({className, children, image, left}) => (
 
 const Index = () => (
 	<div className="relative">
-		<Nav {...{email:'mikal@mikalhowardfinance.com.au', phone:'0419 820 366'}}/>
+		<Nav/>
 		<Hero/>
 		<Section className="">
 			<div className="flex flex-col md:flex-row gap-4 sm:gap-16 lg:gap-24 justify-center md:items-start items-center">
@@ -80,7 +79,7 @@ const Index = () => (
 			</div>
 		</Section>
 		<ContentSection className="" left={true}
-			image={<img src="images/bg-showcase-2.jpg" alt="Couple being handed some keys to their new home"></img>}>
+			image={<img width="2500" height="1668" src="images/bg-showcase-2.jpg" alt="Couple being handed some keys to their new home"></img>}>
 			<H2>Move into your dream home</H2>
 			<P>
 				Going through the process of securing a home loan can be daunting, let us make it easy for you. 
@@ -89,7 +88,7 @@ const Index = () => (
 			</P>
 		</ContentSection>
 		<ContentSection className="" left={false}
-			image={<img src="images/old-3608950_1920.jpg" alt="Older couple walking along the beach"></img>}>
+			image={<img width="1920" height="1280" src="images/old-3608950_1920.jpg" alt="Older couple walking along the beach"></img>}>
 			<H2>Grow your business</H2>
 			<P>
 				Let us take the stress out of the entire loan process, so you can spend more time and energy working 
@@ -97,7 +96,7 @@ const Index = () => (
 			</P>
 		</ContentSection>
 		<ContentSection className="" left={true}
-			image={<img src="images/Mikal20-optim.webp" alt="Mikal Howard from Mikal Howard Finance sitting down looking at the camera"></img>}>
+			image={<img width="1909" height="1400" src="images/Mikal20-optim.webp" alt="Mikal Howard from Mikal Howard Finance sitting down looking at the camera"></img>}>
 			<H2>Community focused, Adelaide broker</H2>
 			<P>
 				As a local broker and property investor in the Adelaide and

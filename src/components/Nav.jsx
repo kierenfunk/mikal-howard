@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import MenuIcon from './MenuIcon';
 import TopBar from '../components/TopBar';
 import NavItems from '../components/NavItems';
+import constants from '../utils/constants';
 
-const Nav = ({email, phone}) => {
+const Nav = () => {
     const [open, setOpen] = useState(false)
+    const {email, phone} = constants
+
     return(
         <React.Fragment>
 		    <TopBar {...{email,phone}}/>
             <div className="sticky top-0 z-20">
                 <div className="py-2 px-6 bg-white flex justify-between">
                     <div className="flex justify-center items-center">
-                        <a href="/"><img className="w-24" src="images/logo.png" alt="Mikal Howard Finance Logo"></img></a>
+                        <a href="/"><img width="1897" height="1085" className="w-24" src="images/logo.png" alt="Mikal Howard Finance Logo"></img></a>
                     </div>
                     <div className="flex justify-center items-center relative">
                         <div className="md:hidden">

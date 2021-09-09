@@ -1,6 +1,6 @@
-const SubmitButton = ({...props}) => (
-    <div>
-        <button type="submit" className="rounded px-4 py-2 bg-red-600 hover:bg-red-700 text-white">Submit Now</button>
+const SubmitButton = ({currentStep, onClick}) => (
+    <div className="w-full text-center">
+        <button onClick={onClick} tabIndex={`${currentStep? '0' : '-1'}`} type="submit" className="rounded px-4 py-2 bg-red-400 hover:bg-red-600 text-white text-2xl">Submit Now</button>
     </div>
 )
 

@@ -1,5 +1,5 @@
-const FileInput = ({name,handleChange,handleBlur,values}) => (
-    <input name={name} type="file"
+const FileInput = ({name,handleChange,handleBlur,values, currentStep}) => (
+    <input tabIndex={`${currentStep? '0' : '-1'}`} name={name} type="file"
         onChange={async (e) => {
             try{
                 const response = await fetch(

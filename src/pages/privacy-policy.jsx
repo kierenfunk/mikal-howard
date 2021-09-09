@@ -7,7 +7,7 @@ import P from '../components/P';
 
 const PrivacyPolicy = () => (
 	<div>
-		<Nav {...{email:'mikal@mikalhowardfinance.com.au', phone:'0419 820 366'}}/>
+		<Nav/>
 		<Section className="lg:w-10/12 m-auto">
 			<H1 id="privacy-policy">Privacy Policy</H1>
 			<P className="my-8">At Mikal Howard Finance, we are committed to protecting your privacy in accordance with the Privacy Act 1988 (Cth). This Privacy Policy describes our current policies and practices in relation to the handling and use of personal information.</P>

@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         'header': ['Futura','sans-serif']
       },
+      animation: {
+        'spin-slow': 'spin 3s ease-in-out infinite',
+      }
     },
   },
   variants: {

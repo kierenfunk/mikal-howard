@@ -1,5 +1,5 @@
-const RadioButton = ({option, onClick, selected}) => (
-    <div className={`rounded border  m-2 p-2  ${selected? 'bg-black text-white border-white' : 'bg-gray-100 border-black text-black'}`} onClick={onClick}>{option}</div>
+const RadioButton = ({option, onClick, selected, currentStep}) => (
+    <div onKeyPress={(e)=>{e.charCode===13? onClick() : null }} tabIndex={`${currentStep? '0' : '-1'}`} className={`cursor-pointer rounded border my-2 py-3 px-4 leading-tight ${selected? 'bg-gray-900 text-white border-white' : 'bg-gray-200 border-black text-gray-700'}`} onClick={onClick}>{option}</div>
 )
 
 export default RadioButton;

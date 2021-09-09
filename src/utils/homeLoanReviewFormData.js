@@ -2,9 +2,15 @@ const formFields = [
     {},
     {
         fields:{
-            fullName: {
+            firstName: {
                 init:'',
-                label:"Your full name:",
+                label:"Your first name:",
+                type:'text',
+                required: true,
+            }, 
+            lastName: {
+                init:'',
+                label:"Your last name:",
                 type:'text',
                 required: true,
             }, 
@@ -92,30 +98,25 @@ const formFields = [
         paragraphs:['Do you have any future plans you want your broker to be aware of such as new vehicle or investment property purchase, potential sale of any properties, retirement etc? If yes, please detail below and provide approximate dates:']
     },{
         fields:{
-            other: {
-                init:'',
-                type:'textarea'
-            }, 
-        },
-        paragraphs:['Do you have any other questions regarding repayments, redraw, offset or anything else we can answer in our review:']
-    },{
-        fields:{
             documents: {
                 init:'',
-                required: true,
+                required: false,
                 type:'file'
             }
         },
         paragraphs:['Please upload your screenshots/statements for your loan/s showing the interest rate, account details and any offsets']
-    },
-    /*{
+    },{
         fields:{
-            submit: {
-                label:'You are finished! We will get back to you within 7 days to discuss with you your results. If you have any more questions, you can contact Mikal directly at....',
-                type: 'submit'
+            other: {
+                init:'',
+                type:'textarea'
+            },
+            submit:{
+                type:'submit'
             }
-        }
-    }*/
+        },
+        paragraphs:['Do you have any other questions regarding repayments, redraw, offset or anything else we can answer in our review:']
+    }
 ]
 
 export default formFields;

@@ -15,20 +15,20 @@ const GenericStep = ({index, step, fields, ...props}) => (
     <Step {...{index, step}}>
         {'header' in props? <H1>{props.header}</H1> : null }
         {'paragraphs' in props? props.paragraphs.map((paragraph,i)=>(<P key={i}>{paragraph}</P>)) : null }
-        {Object.keys(fields).map((name,key)=>(
-            <div key={key} className={`${conditionResolver(fields[name],props.values)} py-2`}>
+        {Object.keys(fields).map((name,i)=>(
+            <div key={i} className={`${conditionResolver(fields[name],props.values)} py-1`}>
                 {'label' in fields[name]? <Label htmlFor={name}>{fields[name].label}</Label> : null}
                 {(()=>{
                     if (fields[name].type==='choice')
-                        return <RadioGroup {...props} name={name} options={fields[name].options}/>
+                        return <RadioGroup {...props} name={name} options={fields[name].options} currentStep={index===step}/>
                     else if (fields[name].type==='textarea')
-                        return <TextArea {...props} name={name}/>
+                        return <TextArea {...props} name={name} currentStep={index===step}/>
                     else if (['text', 'email'].includes(fields[name].type))
-                        return <Input {...props} name={name}/>
+                        return <Input {...props} name={name} currentStep={index===step}/>
                     else if (fields[name].type==='file')
-                        return <FileInput {...props} name={name}/>
+                        return <FileInput {...props} name={name} currentStep={index===step}/>
                     else if (fields[name].type==='submit')
-                        return <SubmitButton {...props} name={name}/>
+                        return <SubmitButton {...props} name={name} currentStep={index===step}/>
                 })()}
                 <ErrorMessage errors={props.errors} touched={props.touched} name={name}/>
             </div>
