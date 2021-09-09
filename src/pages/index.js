@@ -9,6 +9,7 @@ import DollarSign from '../components/Icons/DollarSign';
 import House from '../components/Icons/House';
 import Link from 'next/link'
 
+
 const Hero = () => (
 	<div className="flex md:flex-row flex-col-reverse">
 		<div className="bg-gray-800 flex-1 flex items-center justify-center p-4 sm:p-8 text-white">
