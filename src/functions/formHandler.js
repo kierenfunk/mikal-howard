@@ -1,5 +1,3 @@
-const bodyParse = require('body-parser')
-
 exports.handler = async (event, context, callback) => {
     console.log(event.body)
 
