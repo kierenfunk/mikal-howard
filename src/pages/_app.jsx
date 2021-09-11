@@ -1,10 +1,11 @@
-import 'normalize.css'
-import 'tailwindcss/tailwind.css'
+import React from 'react';
+import 'normalize.css';
+import 'tailwindcss/tailwind.css';
 import '../../public/fonts/Futura-Book.css';
 import '../../public/menu-icon.css';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
