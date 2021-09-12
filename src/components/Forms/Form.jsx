@@ -1,12 +1,11 @@
 import { Formik } from 'formik';
 import React, { useState } from 'react';
-import isEmail from 'validator/lib/isEmail';
 
 import GenericStep from './GenericStep';
 import SubmissionStep from './SubmissionStep';
 import StepControl from './StepControl';
-import conditionResolver from './ConditionResolver';
 import Step from './Step';
+import Validator from './Validator';
 
 const Form = ({ formFields, Introduction }) => {
   const [step, setStep] = useState(0);
@@ -30,14 +29,7 @@ const Form = ({ formFields, Introduction }) => {
     <Formik
       initialValues={Object.keys(flatFields)
         .reduce((obj, f) => ({ ...obj, [f]: flatFields[f].init }), {})}
-      validate={(values) => Object.keys(values).reduce((errors, key) => {
-        const field = flatFields[key];
-        if (conditionResolver(field, values) === 'invisible') return errors;
-        let newErrors = {};
-        if ('type' in field && field.type === 'email' && !isEmail(values[key])) newErrors = { ...newErrors, [key]: 'A valid email is required' };
-        if ('required' in field && field.required && values[key].length < 1) newErrors = { ...newErrors, [key]: 'Required' };
-        return { ...errors, ...newErrors };
-      }, {})}
+      validate={(values) => Validator(values, flatFields)}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
 

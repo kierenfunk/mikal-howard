@@ -4,18 +4,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ola: "#90c0e5"
+        ola: '#90c0e5',
       },
       fontFamily: {
-        'header': ['Futura','sans-serif']
+        header: ['Futura', 'sans-serif'],
       },
       animation: {
         'spin-slow': 'spin 3s ease-in-out infinite',
-      }
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

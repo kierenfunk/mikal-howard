@@ -23,6 +23,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/jsx-props-no-spreading': 'off',
     '@next/next/no-img-element': 'off',
-    'jsx-a11y/interactive-supports-focus' : 'off' 
+    'jsx-a11y/interactive-supports-focus': 'off',
   },
 };

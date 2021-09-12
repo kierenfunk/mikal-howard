@@ -1,16 +1,18 @@
 import React from 'react';
 import conditionResolver from './ConditionResolver';
+import Validator from './Validator';
 
 const StepControl = ({
-  step, setStep, formFields, values, errors, touched, handleBlur,
+  step, setStep, formFields, values, touched, handleBlur,
 }) => {
   const moveForward = () => {
     let progress = true;
     if ('fields' in formFields[step]) {
+      const validation = Validator(values, formFields[step].fields);
       const invalidFields = Object.keys(formFields[step].fields).filter((key) => {
         if (conditionResolver(formFields[step].fields[key], values) === 'invisible' || !formFields[step].fields[key].required) return false;
         handleBlur({ target: { name: key } });
-        return errors[key] || !touched[key];
+        return (key in validation) || !touched[key];
       });
       progress = invalidFields.length > 0 ? false : progress;
     }

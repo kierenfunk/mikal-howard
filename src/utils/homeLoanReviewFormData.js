@@ -97,8 +97,8 @@ const formFields = [
   }, {
     fields: {
       documents: {
-        init: '',
-        required: false,
+        init: {},
+        required: true,
         type: 'file',
       },
     },

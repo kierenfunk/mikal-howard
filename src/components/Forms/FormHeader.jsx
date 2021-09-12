@@ -15,7 +15,7 @@ const FormHeader = () => (
       <Link href="/" passHref>
         <button type="button">
           <div className="flex items-center flex-col px-4">
-            <Close />
+            <Close size={8} />
           </div>
         </button>
       </Link>

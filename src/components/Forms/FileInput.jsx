@@ -1,42 +1,52 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
+import FileHandler from './FileHandler';
+import fileUploader from './fileUploader';
+import promiseWrapper from './promiseWrapper';
 
 const FileInput = ({
-  name, handleChange, currentStep,
+  name, currentStep, values, setFieldValue, handleBlur,
 }) => (
-  <input
-    tabIndex={`${currentStep ? '0' : '-1'}`}
-    name={name}
-    type="file"
-    onChange={async (e) => {
-      try {
-        const response = await fetch(
-          'https://a6ksd5mt56.execute-api.us-east-1.amazonaws.com/dev/',
-        );
-        const responseJson = await response.json();
+  <Dropzone
+    onDrop={(acceptedFiles) => {
+      const filePromises = acceptedFiles.map(
+        (file) => ({ url: promiseWrapper(fileUploader(file)), file }),
+      );
 
-        const blob = e.target.files[0];
-        const newFile = new File([blob], `${responseJson.key}`, { type: blob.type });
-        // console.log(newFile)
-        // e.target.files[0].name = responseJson.key
-        // let form = new FormData();
-        // form.append('test', newFile);
+      setFieldValue(name, {
+        ...values[name],
+        ...filePromises.reduce((obj, file) => ({
+          ...obj,
+          [file.file.name]: file,
+        }), {}),
+      });
 
-        await fetch(responseJson.url, {
-          method: 'PUT',
-          body: newFile,
-          headers: {
-            'Content-Type': blob.type,
-          },
-        });
-      } catch (error) {
-        // eslint-disable-next-line
-        console.error(error);
-      }
-
-      handleChange({ target: { value: Array.from(e.target.files), name } });
+      Promise.all(filePromises.map((f) => f.url)).then(() => handleBlur({ target: { name } }));
     }}
-  />
-  // multiple
+    accept={['image/*', '.pdf']}
+  >
+    {({ getRootProps, getInputProps }) => (
+      <section className="border rounded p-2 border-gray-500 border-4 bg-gray-200">
+        <div {...getRootProps()} tabIndex={`${currentStep ? '0' : '-1'}`} className="cursor-pointer border-dashed border-2 border-gray-500 text-center px-4 py-8 rounded focus:border-blue-500">
+          {/* eslint-disable-next-line */}
+          <label htmlFor={name} className="cursor-pointer text-gray-500">Drag &apos;n&apos; drop files here, or click to select files</label>
+          <p className="text-gray-500 text-xs">Only image and pdf files are accepted</p>
+          <input name={name} {...getInputProps()} />
+        </div>
+        <ul className="p-2 text-gray-700">
+          {Object.entries(values[name]).map((file) => (
+            <FileHandler
+              key={file[0]}
+              {...{
+                file: file[1], setFieldValue, name, values, currentStep,
+              }}
+              fileName={file[0]}
+            />
+          ))}
+        </ul>
+      </section>
+    )}
+  </Dropzone>
 );
 
 export default FileInput;
