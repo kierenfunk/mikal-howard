@@ -29,6 +29,7 @@ const FileHandler = ({
       {uploaded
         ? (
           <button
+            className="w-3"
             type="button"
             tabIndex={`${currentStep ? '0' : '-1'}`}
             onClick={removeFile}
