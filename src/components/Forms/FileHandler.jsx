@@ -33,6 +33,7 @@ const FileHandler = ({
             tabIndex={`${currentStep ? '0' : '-1'}`}
             onClick={removeFile}
           >
+            {' '}
             <Close size={3} />
           </button>
         ) : <LoadingCircle size={4} />}
